@@ -82,7 +82,7 @@ function App() {
   let winner;
 
   if (determineWinner(gameBoard)) {
-    winner = activePlayer == "X" ? "O" : "X";
+    winner = activePlayer == "X" ? players["O"] : players["X"];
   }
 
   const hasDraw = gameTurns.length === 9 && !winner;
@@ -132,7 +132,7 @@ function App() {
             />
           </ol>
           {(winner || hasDraw) && (
-            <GameOver winner={players[winner]} onRestart={handleRestart} />
+            <GameOver winner={winner} onRestart={handleRestart} />
           )}
           <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
         </div>
